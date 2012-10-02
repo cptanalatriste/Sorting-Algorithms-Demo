@@ -18,11 +18,15 @@ public class InsertionSorter<T extends Comparable<T>> extends BaseSorter<T> {
 
 	@Override
 	protected void sortData() {
-		for (int currentIndex = 1; currentIndex < getLength(); currentIndex++) {
-			for (int auxIndex = currentIndex; auxIndex > 0
-					&& getData(auxIndex).compareTo(getData(auxIndex - 1)) < 0; auxIndex--) {
-				exchange(auxIndex, auxIndex - 1);
+		for (int currentIndex = 0; currentIndex < getLength(); currentIndex++) {
+			T currentItem = getData(currentIndex);
+			int auxIndex = currentIndex;
+			while (auxIndex > 0
+					&& getData(auxIndex - 1).compareTo(currentItem) >= 0) {
+				setData(auxIndex, getData(auxIndex - 1));
+				--auxIndex;
 			}
+			setData(auxIndex, currentItem);
 		}
 	}
 

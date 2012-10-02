@@ -14,7 +14,7 @@ public class SortingAlgorithmsDemo {
 		String[] dataToSort = { "S", "O", "R", "T", "E", "X", "A", "M", "P",
 				"L", "E" };
 		BaseSorter<String> sorter = SorterFactory.getSorter(dataToSort,
-				SortingAlgorithm.BUBBLE);
+				SortingAlgorithm.QUICK);
 		System.out.println("Before sorting ...");
 		sorter.show();
 

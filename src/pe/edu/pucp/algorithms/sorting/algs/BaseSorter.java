@@ -29,8 +29,8 @@ public abstract class BaseSorter<T extends Comparable<T>> {
 
 	protected void exchange(int index, int anotherIndex) {
 		T itemAtIndex = data[index];
-		data[index] = data[anotherIndex];
-		data[anotherIndex] = itemAtIndex;
+		setData(index, data[anotherIndex]);
+		setData(anotherIndex, itemAtIndex);
 	}
 
 	protected boolean isSorted() {
@@ -59,6 +59,14 @@ public abstract class BaseSorter<T extends Comparable<T>> {
 
 	protected T getData(int index) {
 		return data[index];
+	}
+
+	protected void setData(int index, T item) {
+		data[index] = item;
+	}
+	
+	protected int getMaxIndex() {
+		return data.length -1;
 	}
 
 }
