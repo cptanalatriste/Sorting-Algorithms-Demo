@@ -18,7 +18,7 @@ public class BubbleSorter<T extends Comparable<T>> extends BaseSorter<T> {
 
 	@Override
 	protected void sortData() {
-		for (int lastIndexToCompare = getLength() - 1; lastIndexToCompare > 1; lastIndexToCompare--) {
+		for (int lastIndexToCompare = getMaxIndex(); lastIndexToCompare > 1; lastIndexToCompare--) {
 			for (int currentIndex = 0; currentIndex < lastIndexToCompare; currentIndex++) {
 				if (getData(currentIndex).compareTo(getData(currentIndex + 1)) > 0) {
 					exchange(currentIndex, currentIndex + 1);

@@ -8,9 +8,11 @@ package pe.edu.pucp.algorithms.sorting.algs;
  * @param <T>
  *            Type of the array to be sorted
  */
-public abstract class BaseSorter<T extends Comparable<T>> {
+@SuppressWarnings("unchecked")
+public abstract class BaseSorter<T extends Comparable> {
 
 	private T[] data;
+	private ArrayChangeListener<T> arrayChangeListener;
 
 	public BaseSorter(T[] data) {
 		this.data = data;
@@ -61,12 +63,21 @@ public abstract class BaseSorter<T extends Comparable<T>> {
 		return data[index];
 	}
 
+	public T[] getDataArray() {
+		return data;
+	}
+
 	protected void setData(int index, T item) {
 		data[index] = item;
+		arrayChangeListener.arrayChanged(data);
 	}
-	
+
 	protected int getMaxIndex() {
-		return data.length -1;
+		return data.length - 1;
+	}
+
+	public void setArrayChangeListener(ArrayChangeListener arrayChangeListener) {
+		this.arrayChangeListener = arrayChangeListener;
 	}
 
 }
