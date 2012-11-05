@@ -113,24 +113,20 @@ public class SortingAlgorithmsDemo extends ApplicationFrame implements
 		RefineryUtilities.centerFrameOnScreen(sortingAlgorithmDemo);
 		sortingAlgorithmDemo.setVisible(true);
 		BaseSorter<CustomTimeSeriesDataItem> sorter = SorterFactory.getSorter(
-				dataToSort, SortingAlgorithm.BUBBLE);
+				dataToSort, SortingAlgorithm.QUICK);
 		sorter.setArrayChangeListener(sortingAlgorithmDemo);
 		sorter.sort();
 		updateDataSet(timeSeries, sorter.getDataArray());
-		System.out.println("You should see sorted input now");
 	}
 
 	@Override
 	public void arrayChanged(CustomTimeSeriesDataItem[] dataArray) {
-
-		System.out.println("In arrayChanged");
-		updateDataSet(timeSeries, dataArray);
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(800);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
+		updateDataSet(timeSeries, dataArray);
 	}
 
 	private static CustomTimeSeriesDataItem[] getDataToSort() {

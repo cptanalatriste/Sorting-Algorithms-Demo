@@ -36,12 +36,14 @@ public class QuickSorter<T extends Comparable<T>> extends BaseSorter<T> {
 		int rightScanner = higherIndex + 1;
 		T pivotItem = getData(lowerIndex);
 		while (true) {
-			while (getData(++leftScanner).compareTo(pivotItem) < 0) {
+			while (leftScanner < (getMaxIndex() - 1)
+					&& getData(++leftScanner).compareTo(pivotItem) < 0) {
 				if (leftScanner == higherIndex) {
 					break;
 				}
 			}
-			while (pivotItem.compareTo(getData(--rightScanner)) < 0) {
+			while (rightScanner > 0
+					&& pivotItem.compareTo(getData(--rightScanner)) < 0) {
 				if (rightScanner == lowerIndex) {
 					break;
 				}
