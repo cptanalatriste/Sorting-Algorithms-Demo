@@ -1,4 +1,4 @@
-package pe.edu.pucp.algorithms.sorting;
+package pe.edu.pucp.algorithms.sorting.graph;
 
 import org.jfree.data.time.RegularTimePeriod;
 import org.jfree.data.time.TimeSeriesDataItem;

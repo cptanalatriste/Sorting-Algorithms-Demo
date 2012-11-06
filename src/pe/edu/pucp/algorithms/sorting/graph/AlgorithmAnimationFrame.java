@@ -1,4 +1,4 @@
-package pe.edu.pucp.algorithms.sorting;
+package pe.edu.pucp.algorithms.sorting.graph;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -33,7 +34,7 @@ import pe.edu.pucp.algorithms.sorting.algs.BaseSorter;
 import pe.edu.pucp.algorithms.sorting.algs.SorterFactory;
 import pe.edu.pucp.algorithms.sorting.algs.SortingAlgorithm;
 
-public class SortingAlgorithmsDemo extends ApplicationFrame implements
+public class AlgorithmAnimationFrame extends ApplicationFrame implements
 		ArrayChangeListener<CustomTimeSeriesDataItem> {
 
 	private static final long serialVersionUID = -6451446062734426445L;
@@ -46,7 +47,7 @@ public class SortingAlgorithmsDemo extends ApplicationFrame implements
 
 	private static TimeSeries timeSeries;
 
-	public SortingAlgorithmsDemo(String s, TimeSeriesDataItem[] dataToSort) {
+	public AlgorithmAnimationFrame(String s, TimeSeriesDataItem[] dataToSort) {
 		super(s);
 		JPanel jpanel = createDemoPanel(dataToSort);
 		jpanel.setPreferredSize(new Dimension(500, 270));
@@ -107,7 +108,7 @@ public class SortingAlgorithmsDemo extends ApplicationFrame implements
 	@SuppressWarnings("unchecked")
 	public static void main(String args[]) {
 		CustomTimeSeriesDataItem[] dataToSort = getDataToSort();
-		SortingAlgorithmsDemo sortingAlgorithmDemo = new SortingAlgorithmsDemo(
+		AlgorithmAnimationFrame sortingAlgorithmDemo = new AlgorithmAnimationFrame(
 				TITLE, dataToSort);
 		sortingAlgorithmDemo.pack();
 		RefineryUtilities.centerFrameOnScreen(sortingAlgorithmDemo);
@@ -120,13 +121,19 @@ public class SortingAlgorithmsDemo extends ApplicationFrame implements
 	}
 
 	@Override
-	public void arrayChanged(CustomTimeSeriesDataItem[] dataArray) {
+	public void arrayChanged(final CustomTimeSeriesDataItem[] dataArray) {
 		try {
-			Thread.sleep(800);
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		updateDataSet(timeSeries, dataArray);
+
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				updateDataSet(timeSeries, dataArray);
+			}
+		});
+
 	}
 
 	private static CustomTimeSeriesDataItem[] getDataToSort() {
@@ -194,5 +201,4 @@ public class SortingAlgorithmsDemo extends ApplicationFrame implements
 		return dataToSort.toArray(new CustomTimeSeriesDataItem[dataToSort
 				.size()]);
 	}
-
 }
