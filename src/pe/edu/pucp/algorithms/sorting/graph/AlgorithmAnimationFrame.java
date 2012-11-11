@@ -114,16 +114,17 @@ public class AlgorithmAnimationFrame extends ApplicationFrame implements
 		RefineryUtilities.centerFrameOnScreen(sortingAlgorithmDemo);
 		sortingAlgorithmDemo.setVisible(true);
 		BaseSorter<CustomTimeSeriesDataItem> sorter = SorterFactory.getSorter(
-				dataToSort, SortingAlgorithm.QUICK);
+				CustomTimeSeriesDataItem.class, dataToSort,
+				SortingAlgorithm.COMB);
 		sorter.setArrayChangeListener(sortingAlgorithmDemo);
 		sorter.sort();
-		updateDataSet(timeSeries, sorter.getDataArray());
+		updateDataSet(timeSeries, sorter.getData());
 	}
 
 	@Override
 	public void arrayChanged(final CustomTimeSeriesDataItem[] dataArray) {
 		try {
-			Thread.sleep(500);
+			Thread.sleep(250);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -139,15 +140,15 @@ public class AlgorithmAnimationFrame extends ApplicationFrame implements
 	private static CustomTimeSeriesDataItem[] getDataToSort() {
 		List<CustomTimeSeriesDataItem> dataToSort = new ArrayList<CustomTimeSeriesDataItem>();
 		dataToSort
-				.add(new CustomTimeSeriesDataItem(new Year(1), new Integer(0)));
+				.add(new CustomTimeSeriesDataItem(new Year(1), new Integer(6)));
 		dataToSort
 				.add(new CustomTimeSeriesDataItem(new Year(2), new Integer(1)));
 		dataToSort
-				.add(new CustomTimeSeriesDataItem(new Year(3), new Integer(0)));
+				.add(new CustomTimeSeriesDataItem(new Year(3), new Integer(4)));
 		dataToSort
 				.add(new CustomTimeSeriesDataItem(new Year(4), new Integer(2)));
 		dataToSort
-				.add(new CustomTimeSeriesDataItem(new Year(5), new Integer(0)));
+				.add(new CustomTimeSeriesDataItem(new Year(5), new Integer(8)));
 		dataToSort
 				.add(new CustomTimeSeriesDataItem(new Year(6), new Integer(1)));
 		dataToSort

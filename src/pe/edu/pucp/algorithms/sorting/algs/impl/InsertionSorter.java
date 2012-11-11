@@ -12,8 +12,8 @@ import pe.edu.pucp.algorithms.sorting.algs.BaseSorter;
  */
 public class InsertionSorter<T extends Comparable<T>> extends BaseSorter<T> {
 
-	public InsertionSorter(T[] data) {
-		super(data);
+	public InsertionSorter(Class<T> clazz, T[] data) {
+		super(clazz, data);
 	}
 
 	@Override

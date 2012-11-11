@@ -12,14 +12,13 @@ import pe.edu.pucp.algorithms.sorting.algs.BaseSorter;
  */
 public class QuickSorter<T extends Comparable<T>> extends BaseSorter<T> {
 
-	public QuickSorter(T[] data) {
-		super(data);
+	public QuickSorter(Class<T> clazz, T[] data) {
+		super(clazz, data);
 	}
 
 	@Override
 	protected void sortData() {
 		recursiveSort(0, getMaxIndex());
-
 	}
 
 	private void recursiveSort(int lowerIndex, int higherIndex) {

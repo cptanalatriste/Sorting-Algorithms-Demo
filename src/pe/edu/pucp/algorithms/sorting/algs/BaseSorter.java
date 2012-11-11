@@ -11,11 +11,13 @@ package pe.edu.pucp.algorithms.sorting.algs;
 @SuppressWarnings("unchecked")
 public abstract class BaseSorter<T extends Comparable> {
 
+	protected Class<T> clazz;
 	private T[] data;
 	private ArrayChangeListener<T> arrayChangeListener;
 
-	public BaseSorter(T[] data) {
+	public BaseSorter(Class<T> clazz, T[] data) {
 		this.data = data;
+		this.clazz = clazz;
 	}
 
 	protected abstract void sortData();
@@ -23,7 +25,7 @@ public abstract class BaseSorter<T extends Comparable> {
 	public void sort() {
 		sortData();
 		if (!isSorted()) {
-			throw new RuntimeException("Algoritm is not sorted");
+			throw new RuntimeException("The input is not sorted");
 		}
 		System.out.println("The input is now sorted");
 
@@ -44,27 +46,16 @@ public abstract class BaseSorter<T extends Comparable> {
 		return true;
 	}
 
-	// TODO (cgavidia): Demo implementation
-	public void show() {
-		for (int i = 0; i < data.length; i++) {
-			System.out.println(data[i]);
-		}
-	}
-
 	protected int getLength() {
 		return data.length;
 	}
 
-	protected T[] getData() {
+	public T[] getData() {
 		return data;
 	}
 
 	protected T getData(int index) {
 		return data[index];
-	}
-
-	public T[] getDataArray() {
-		return data;
 	}
 
 	protected void setData(int index, T item) {

@@ -12,8 +12,8 @@ import pe.edu.pucp.algorithms.sorting.algs.BaseSorter;
  */
 public class BubbleSorter<T extends Comparable<T>> extends BaseSorter<T> {
 
-	public BubbleSorter(T[] data) {
-		super(data);
+	public BubbleSorter(Class<T> clazz, T[] data) {
+		super(clazz, data);
 	}
 
 	@Override
