@@ -15,6 +15,13 @@ import pe.edu.pucp.algorithms.sorting.algs.SortingAlgorithm;
 import pe.edu.pucp.algorithms.sorting.graph.AlgorithmAnimationFrame;
 import pe.edu.pucp.algorithms.sorting.graph.CustomTimeSeriesDataItem;
 
+/**
+ * Launcher class for the Algorithm Demo Program. It's a console application
+ * with the responsability of instantiating the Algorithm frame.
+ * 
+ * @author Carlos Gavidia (cgavidia@acm.org)
+ * 
+ */
 public class SortingAlgorithmDemoLauncher {
 
 	private static final String INVALID_INPUT = "ERROR: El valor ingresado es inválido.\n";
@@ -79,7 +86,7 @@ public class SortingAlgorithmDemoLauncher {
 		while (selectedAlgoritm == null) {
 			System.out.println(SELECT_SORTING_ALGORITHM);
 			for (SortingAlgorithm algorithm : SortingAlgorithm.values()) {
-				String menuItem = algorithm.ordinal() + " " + algorithm.name();
+				String menuItem = algorithm.ordinal() + ": " + algorithm.name();
 				System.out.println(menuItem);
 			}
 			try {

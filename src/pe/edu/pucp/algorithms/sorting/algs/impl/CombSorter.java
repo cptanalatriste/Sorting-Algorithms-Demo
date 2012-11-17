@@ -6,7 +6,7 @@ import pe.edu.pucp.algorithms.sorting.algs.BaseSorter;
  * Implementation of Insertion Sort algorithm. Based on
  * http://www.cs.ubc.ca/~harrison/Java/CombSort11Algorithm.java.html.
  * 
- * @author Carlos Gavidia (c.gavidia@hotmail.com)
+ * @author Carlos Gavidia (cgavidia@acm.org)
  * 
  * @param <T>
  *            Type of the array to be sorted
@@ -19,6 +19,11 @@ public class CombSorter<T extends Comparable<T>> extends BaseSorter<T> {
 		super(clazz, data);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see pe.edu.pucp.algorithms.sorting.algs.BaseSorter#sortData()
+	 */
 	@Override
 	public void sortData() {
 		boolean flipped = false;
@@ -34,8 +39,8 @@ public class CombSorter<T extends Comparable<T>> extends BaseSorter<T> {
 			int top = getLength() - gap;
 			for (int i = 0; i < top; i++) {
 				int j = i + gap;
-				T elementAtI = getData(i);
-				T elementAtJ = getData(j);
+				T elementAtI = getDataAtIndex(i);
+				T elementAtJ = getDataAtIndex(j);
 				if (elementAtI.compareTo(elementAtJ) > 0) {
 					exchange(i, j);
 					flipped = true;

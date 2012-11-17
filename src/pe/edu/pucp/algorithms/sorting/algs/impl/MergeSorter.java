@@ -7,7 +7,7 @@ import pe.edu.pucp.algorithms.sorting.algs.BaseSorter;
 /**
  * Base Class for Merge Sort algorithms.
  * 
- * @author Carlos Gavidia (c.gavidia@hotmail.com)
+ * @author Carlos Gavidia (cgavidia@acm.org)
  * 
  * @param <T>
  *            Type of the array to be sorted
@@ -20,6 +20,18 @@ public abstract class MergeSorter<T extends Comparable<T>> extends
 
 	}
 
+	/**
+	 * Based on the implementation described in Robert Sedgewick's Algorithm
+	 * book.Given two sorted sub-arrays of the data array, it merges the two of
+	 * them into one sorted array. The arrays are delimited by 3 indexes.
+	 * 
+	 * @param lowerIndex
+	 *            Lower index of the data array.
+	 * @param midIndex
+	 *            Mid index of the data array.
+	 * @param higherIndex
+	 *            Higher index of the data array.
+	 */
 	@SuppressWarnings("unchecked")
 	protected void merge(int lowerIndex, int midIndex, int higherIndex) {
 
@@ -29,7 +41,7 @@ public abstract class MergeSorter<T extends Comparable<T>> extends
 		int auxArraySize = higherIndex + 1;
 		T[] auxiliarArray = (T[]) Array.newInstance(clazz, auxArraySize);
 		for (int i = lowerIndex; i <= higherIndex; i++) {
-			auxiliarArray[i] = getData(i);
+			auxiliarArray[i] = getDataAtIndex(i);
 		}
 		for (int j = lowerIndex; j <= higherIndex; j++) {
 			T itemFromLeftArray = null;
@@ -41,17 +53,17 @@ public abstract class MergeSorter<T extends Comparable<T>> extends
 				itemFromRightArray = auxiliarArray[rightArrayMarker];
 			}
 			if (leftArrayMarker > midIndex) {
-				setData(j, itemFromRightArray);
+				setDataAtIndex(j, itemFromRightArray);
 				rightArrayMarker++;
 			} else if (rightArrayMarker > higherIndex) {
-				setData(j, itemFromLeftArray);
+				setDataAtIndex(j, itemFromLeftArray);
 				leftArrayMarker++;
 			} else if (itemFromRightArray != null
 					&& itemFromRightArray.compareTo(itemFromLeftArray) < 0) {
-				setData(j, itemFromRightArray);
+				setDataAtIndex(j, itemFromRightArray);
 				rightArrayMarker++;
 			} else {
-				setData(j, itemFromLeftArray);
+				setDataAtIndex(j, itemFromLeftArray);
 				leftArrayMarker++;
 			}
 		}

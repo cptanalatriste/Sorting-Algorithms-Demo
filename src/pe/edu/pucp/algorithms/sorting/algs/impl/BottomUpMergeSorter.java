@@ -1,9 +1,10 @@
 package pe.edu.pucp.algorithms.sorting.algs.impl;
 
 /**
- * Implementation of Bottom-Up Merge Sort algorithm.
+ * Implementation of Bottom-Up Merge Sort algorithm. Based on the implementation
+ * described in Robert Sedgewick's Algorithm book.
  * 
- * @author Carlos Gavidia (c.gavidia@hotmail.com)
+ * @author Carlos Gavidia (cgavidia@acm.org)
  * 
  * @param <T>
  *            Type of the array to be sorted
@@ -15,6 +16,11 @@ public class BottomUpMergeSorter<T extends Comparable<T>> extends
 		super(clazz, data);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see pe.edu.pucp.algorithms.sorting.algs.BaseSorter#sortData()
+	 */
 	@Override
 	public void sortData() {
 		for (int subArraySize = 1; subArraySize < getLength(); subArraySize = subArraySize

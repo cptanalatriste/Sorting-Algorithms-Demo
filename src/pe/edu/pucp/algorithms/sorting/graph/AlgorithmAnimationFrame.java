@@ -28,25 +28,39 @@ import org.jfree.ui.ApplicationFrame;
 
 import pe.edu.pucp.algorithms.sorting.algs.ArrayChangeListener;
 
+/**
+ * Frame that shows the sorting algorithm process.
+ * 
+ * @author Carlos Gavidia (cgavidia@acm.org)
+ * 
+ */
 public class AlgorithmAnimationFrame extends ApplicationFrame implements
 		ArrayChangeListener<CustomTimeSeriesDataItem> {
 
-	private static final String SLEEP_TIME_LABEL = "Tiempo de pausa (milisegundos): ";
-
-	private static final String ARRAY_SIZE_LABEL = "Número de elementos: ";
-
 	private static final long serialVersionUID = -6451446062734426445L;
 
+	private static final String SLEEP_TIME_LABEL = "Tiempo de pausa (milisegundos): ";
+	private static final String ARRAY_SIZE_LABEL = "Número de elementos: ";
 	private static final String SUB_TITLE = "PUCP - Maestría en Informática";
 	private static final String X_LABEL = "Índice";
 	private static final String Y_LABEL = "Tamaño";
 	private static final String BAR_LABEL = "Elemento en el arreglo";
 
-	private static TimeSeries timeSeries;
+	private TimeSeries timeSeries;
 	private String frameTitle;
 	private int sleepTime;
 	private TimeSeriesDataItem[] dataToSort;
 
+	/**
+	 * Gets an animation frame instance.
+	 * 
+	 * @param frameTitle
+	 *            Title of the frame.
+	 * @param dataToSort
+	 *            Data to sort.
+	 * @param sleepTime
+	 *            Delay time for sorting.
+	 */
 	public AlgorithmAnimationFrame(String frameTitle,
 			TimeSeriesDataItem[] dataToSort, int sleepTime) {
 		super(frameTitle);
@@ -81,8 +95,7 @@ public class AlgorithmAnimationFrame extends ApplicationFrame implements
 		return jfreechart;
 	}
 
-	private static IntervalXYDataset startDataSet(
-			TimeSeriesDataItem[] dataAsArray) {
+	private IntervalXYDataset startDataSet(TimeSeriesDataItem[] dataAsArray) {
 		timeSeries = new TimeSeries(BAR_LABEL, X_LABEL, "Count");
 		for (TimeSeriesDataItem dataItem : dataAsArray) {
 			timeSeries.add(dataItem);
@@ -92,6 +105,12 @@ public class AlgorithmAnimationFrame extends ApplicationFrame implements
 		return timeseriescollection;
 	}
 
+	/**
+	 * Change the data set of the Frame, that redraws the entire frame.
+	 * 
+	 * @param dataAsArray
+	 *            New data to show.
+	 */
 	public void updateDataSet(CustomTimeSeriesDataItem[] dataAsArray) {
 		timeSeries.clear();
 		int currentItem = 1;
@@ -108,6 +127,12 @@ public class AlgorithmAnimationFrame extends ApplicationFrame implements
 		return chartPanel;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * pe.edu.pucp.algorithms.sorting.algs.ArrayChangeListener#arrayChanged(T[])
+	 */
 	@Override
 	public void arrayChanged(final CustomTimeSeriesDataItem[] dataArray) {
 		try {
@@ -123,6 +148,11 @@ public class AlgorithmAnimationFrame extends ApplicationFrame implements
 		});
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.awt.Component#toString()
+	 */
 	@Override
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();

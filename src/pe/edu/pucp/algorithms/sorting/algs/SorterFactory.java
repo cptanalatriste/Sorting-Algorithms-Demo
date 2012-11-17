@@ -10,11 +10,24 @@ import pe.edu.pucp.algorithms.sorting.algs.impl.TopDownMergeSorter;
 /**
  * Factory for algorithm implementations.
  * 
- * @author Carlos Gavidia (c.gavidia@hotmail.com)
+ * @author Carlos Gavidia (cgavidia@acm.org)
  * 
  */
 public class SorterFactory {
 
+	/**
+	 * Gets an instance of a Sorting algorithm.
+	 * 
+	 * @param <T>
+	 *            Class of the items to sort.
+	 * @param clazz
+	 *            Class of the items to sort.
+	 * @param data
+	 *            Data array to sort.
+	 * @param algorithm
+	 *            The algorithm to use.
+	 * @return
+	 */
 	public static <T extends Comparable<T>> BaseSorter<T> getSorter(
 			Class<T> clazz, T[] data, SortingAlgorithm algorithm) {
 		BaseSorter<T> sorter = null;
