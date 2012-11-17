@@ -17,7 +17,7 @@ public class QuickSorter<T extends Comparable<T>> extends BaseSorter<T> {
 	}
 
 	@Override
-	protected void sortData() {
+	public void sortData() {
 		recursiveSort(0, getMaxIndex());
 	}
 

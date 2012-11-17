@@ -11,10 +11,10 @@ package pe.edu.pucp.algorithms.sorting.algs;
 @SuppressWarnings("unchecked")
 public abstract class BaseSorter<T extends Comparable> {
 
-	private static final String FAIL_MESSAGE = "La ejecución del algoritmo no ordenó el set de datos.";
-	private static final String SUCCESS_MESSAGE = "El set de Datos se encuentra ordenado.";
-	private static final String HORIZONTAL_LINE = "==============================";
-	private static final String EXECUTION_FINISHED = "Ejecución finalizada";
+	private static final String FAIL_MESSAGE = "La ejecución del algoritmo no ordenó el set de datos.\n";
+	private static final String SUCCESS_MESSAGE = "ERROR: El set de Datos se encuentra ordenado.\n";
+	private static final String HORIZONTAL_LINE = "==============================\n";
+	private static final String EXECUTION_FINISHED = "Ejecución finalizada\n";
 
 	protected Class<T> clazz;
 	private T[] data;
@@ -25,16 +25,19 @@ public abstract class BaseSorter<T extends Comparable> {
 		this.clazz = clazz;
 	}
 
-	protected abstract void sortData();
+	public abstract void sortData();
 
-	public void sort() {
+	public String sortAndShowResults() {
 		sortData();
-		System.out.println(EXECUTION_FINISHED);
-		System.out.println(HORIZONTAL_LINE);
+		StringBuffer buffer = new StringBuffer();
+		buffer.append(EXECUTION_FINISHED);
+		buffer.append(HORIZONTAL_LINE);
 		if (!isSorted()) {
-			throw new RuntimeException(FAIL_MESSAGE);
+			buffer.append(FAIL_MESSAGE);
+		} else {
+			buffer.append(SUCCESS_MESSAGE);
 		}
-		System.out.println(SUCCESS_MESSAGE);
+		return buffer.toString();
 
 	}
 

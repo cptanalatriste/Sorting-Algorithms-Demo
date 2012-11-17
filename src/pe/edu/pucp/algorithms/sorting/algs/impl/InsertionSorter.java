@@ -17,7 +17,7 @@ public class InsertionSorter<T extends Comparable<T>> extends BaseSorter<T> {
 	}
 
 	@Override
-	protected void sortData() {
+	public void sortData() {
 		for (int currentIndex = 0; currentIndex < getLength(); currentIndex++) {
 			T currentItem = getData(currentIndex);
 			int auxIndex = currentIndex;

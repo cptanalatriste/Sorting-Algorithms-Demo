@@ -15,7 +15,7 @@ public class TopDownMergeSorter<T extends Comparable<T>> extends MergeSorter<T> 
 	}
 
 	@Override
-	protected void sortData() {
+	public void sortData() {
 		sortData(0, getLength() - 1);
 	}
 

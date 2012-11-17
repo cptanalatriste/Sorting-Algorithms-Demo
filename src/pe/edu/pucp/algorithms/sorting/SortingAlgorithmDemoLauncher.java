@@ -50,7 +50,8 @@ public class SortingAlgorithmDemoLauncher {
 		System.out.println(algorithmAnimationFrame);
 		System.out.println();
 
-		sorter.sort();
+		String message = sorter.sortAndShowResults();
+		System.out.println(message);
 		long endTime = System.nanoTime();
 		double durationInSeconds = TimeUnit.SECONDS.convert(
 				endTime - startTime, TimeUnit.NANOSECONDS);

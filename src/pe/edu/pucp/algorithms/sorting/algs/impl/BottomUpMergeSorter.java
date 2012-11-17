@@ -16,7 +16,7 @@ public class BottomUpMergeSorter<T extends Comparable<T>> extends
 	}
 
 	@Override
-	protected void sortData() {
+	public void sortData() {
 		for (int subArraySize = 1; subArraySize < getLength(); subArraySize = subArraySize
 				+ subArraySize) {
 			for (int subArrayIndex = 0; subArrayIndex < getLength()

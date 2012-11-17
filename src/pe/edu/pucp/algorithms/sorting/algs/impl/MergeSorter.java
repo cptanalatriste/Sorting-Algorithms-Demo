@@ -20,9 +20,6 @@ public abstract class MergeSorter<T extends Comparable<T>> extends
 
 	}
 
-	@Override
-	protected abstract void sortData();
-
 	@SuppressWarnings("unchecked")
 	protected void merge(int lowerIndex, int midIndex, int higherIndex) {
 

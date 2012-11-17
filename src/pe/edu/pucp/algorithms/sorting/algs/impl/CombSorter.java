@@ -20,7 +20,7 @@ public class CombSorter<T extends Comparable<T>> extends BaseSorter<T> {
 	}
 
 	@Override
-	protected void sortData() {
+	public void sortData() {
 		boolean flipped = false;
 		int gap = getLength();
 		do {
