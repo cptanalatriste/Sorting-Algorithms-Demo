@@ -31,9 +31,12 @@ import pe.edu.pucp.algorithms.sorting.algs.ArrayChangeListener;
 public class AlgorithmAnimationFrame extends ApplicationFrame implements
 		ArrayChangeListener<CustomTimeSeriesDataItem> {
 
+	private static final String SLEEP_TIME_LABEL = "Tiempo de pausa (milisegundos): ";
+
+	private static final String ARRAY_SIZE_LABEL = "Número de elementos: ";
+
 	private static final long serialVersionUID = -6451446062734426445L;
 
-	private static final int SLEEP_TIME = 250;
 	private static final String SUB_TITLE = "PUCP - Maestría en Informática";
 	private static final String X_LABEL = "Índice";
 	private static final String Y_LABEL = "Tamaño";
@@ -41,12 +44,16 @@ public class AlgorithmAnimationFrame extends ApplicationFrame implements
 
 	private static TimeSeries timeSeries;
 	private String frameTitle;
+	private int sleepTime;
+	private TimeSeriesDataItem[] dataToSort;
 
 	public AlgorithmAnimationFrame(String frameTitle,
-			TimeSeriesDataItem[] dataToSort) {
+			TimeSeriesDataItem[] dataToSort, int sleepTime) {
 		super(frameTitle);
 		this.frameTitle = frameTitle;
-		JPanel jpanel = createDemoPanel(dataToSort);
+		this.sleepTime = sleepTime;
+		this.dataToSort = dataToSort;
+		JPanel jpanel = createDemoPanel();
 		jpanel.setPreferredSize(new Dimension(500, 270));
 		setContentPane(jpanel);
 	}
@@ -94,8 +101,8 @@ public class AlgorithmAnimationFrame extends ApplicationFrame implements
 		}
 	}
 
-	public JPanel createDemoPanel(TimeSeriesDataItem[] dataAsArray) {
-		IntervalXYDataset dataSet = startDataSet(dataAsArray);
+	public JPanel createDemoPanel() {
+		IntervalXYDataset dataSet = startDataSet(dataToSort);
 		JFreeChart chart = createChart(dataSet);
 		ChartPanel chartPanel = new ChartPanel(chart);
 		return chartPanel;
@@ -104,7 +111,7 @@ public class AlgorithmAnimationFrame extends ApplicationFrame implements
 	@Override
 	public void arrayChanged(final CustomTimeSeriesDataItem[] dataArray) {
 		try {
-			Thread.sleep(SLEEP_TIME);
+			Thread.sleep(sleepTime);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -114,6 +121,14 @@ public class AlgorithmAnimationFrame extends ApplicationFrame implements
 				updateDataSet(dataArray);
 			}
 		});
+	}
+
+	@Override
+	public String toString() {
+		StringBuffer buffer = new StringBuffer();
+		buffer.append(ARRAY_SIZE_LABEL + dataToSort.length + "\n");
+		buffer.append(SLEEP_TIME_LABEL + sleepTime);
+		return buffer.toString();
 	}
 
 }

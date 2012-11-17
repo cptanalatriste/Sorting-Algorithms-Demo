@@ -11,6 +11,11 @@ package pe.edu.pucp.algorithms.sorting.algs;
 @SuppressWarnings("unchecked")
 public abstract class BaseSorter<T extends Comparable> {
 
+	private static final String FAIL_MESSAGE = "La ejecución del algoritmo no ordenó el set de datos.";
+	private static final String SUCCESS_MESSAGE = "El set de Datos se encuentra ordenado.";
+	private static final String HORIZONTAL_LINE = "==============================";
+	private static final String EXECUTION_FINISHED = "Ejecución finalizada";
+
 	protected Class<T> clazz;
 	private T[] data;
 	private ArrayChangeListener<T> arrayChangeListener;
@@ -24,10 +29,12 @@ public abstract class BaseSorter<T extends Comparable> {
 
 	public void sort() {
 		sortData();
+		System.out.println(EXECUTION_FINISHED);
+		System.out.println(HORIZONTAL_LINE);
 		if (!isSorted()) {
-			throw new RuntimeException("The input is not sorted");
+			throw new RuntimeException(FAIL_MESSAGE);
 		}
-		System.out.println("The input is now sorted");
+		System.out.println(SUCCESS_MESSAGE);
 
 	}
 
