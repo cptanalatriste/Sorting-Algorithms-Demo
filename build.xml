@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project Sorting-Algorithms-Demo">
+	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
+	<!--ANT 1.7 is required                                        -->
+	<target name="create_run_jar">
+		<jar destfile="D:/wsMscPUCP/Sorting-Algorithms-Demo/build/SortingAlgorithmsDemo.jar" filesetmanifest="mergewithoutmain">
+			<manifest>
+				<attribute name="Main-Class" value="pe.edu.pucp.algorithms.sorting.SortingAlgorithmDemoLauncher" />
+				<attribute name="Class-Path" value="." />
+			</manifest>
+			<fileset dir="D:/wsMscPUCP/Sorting-Algorithms-Demo/bin" />
+			<zipfileset excludes="META-INF/*.SF" src="D:/wsMscPUCP/Sorting-Algorithms-Demo/lib/gnujaxp.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="D:/wsMscPUCP/Sorting-Algorithms-Demo/lib/iText-2.1.5.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="D:/wsMscPUCP/Sorting-Algorithms-Demo/lib/jcommon-1.0.17.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="D:/wsMscPUCP/Sorting-Algorithms-Demo/lib/jfreechart-1.0.14-experimental.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="D:/wsMscPUCP/Sorting-Algorithms-Demo/lib/jfreechart-1.0.14-swt.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="D:/wsMscPUCP/Sorting-Algorithms-Demo/lib/jfreechart-1.0.14.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="D:/wsMscPUCP/Sorting-Algorithms-Demo/lib/swtgraphics2d.jar" />
+		</jar>
+	</target>
+</project>
