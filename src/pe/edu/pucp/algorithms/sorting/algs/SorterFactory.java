@@ -15,43 +15,43 @@ import pe.edu.pucp.algorithms.sorting.algs.impl.TopDownMergeSorter;
  */
 public class SorterFactory {
 
-	/**
-	 * Gets an instance of a Sorting algorithm.
-	 * 
-	 * @param <T>
-	 *            Class of the items to sort.
-	 * @param clazz
-	 *            Class of the items to sort.
-	 * @param data
-	 *            Data array to sort.
-	 * @param algorithm
-	 *            The algorithm to use.
-	 * @return
-	 */
-	public static <T extends Comparable<T>> BaseSorter<T> getSorter(
-			Class<T> clazz, T[] data, SortingAlgorithm algorithm) {
-		BaseSorter<T> sorter = null;
+    /**
+     * Gets an instance of a Sorting algorithm.
+     * 
+     * @param <T>
+     *            Class of the items to sort.
+     * @param clazz
+     *            Class of the items to sort.
+     * @param data
+     *            Data array to sort.
+     * @param algorithm
+     *            The algorithm to use.
+     * @return
+     */
+    public static <T extends Comparable<T>> BaseSorter<T> getSorter(
+            Class<T> clazz, T[] data, SortingAlgorithm algorithm) {
+        BaseSorter<T> sorter = null;
 
-		switch (algorithm) {
-		case INSERTION:
-			sorter = new InsertionSorter<T>(clazz, data);
-			break;
-		case BUBBLE:
-			sorter = new BubbleSorter<T>(clazz, data);
-			break;
-		case QUICK:
-			sorter = new QuickSorter<T>(clazz, data);
-			break;
-		case TOPDOWN_MERGE:
-			sorter = new TopDownMergeSorter<T>(clazz, data);
-			break;
-		case BOTTOMUP_MERGE:
-			sorter = new BottomUpMergeSorter<T>(clazz, data);
-			break;
-		case COMB:
-			sorter = new CombSorter<T>(clazz, data);
-			break;
-		}
-		return sorter;
-	}
+        switch (algorithm) {
+        case INSERTION:
+            sorter = new InsertionSorter<T>(clazz, data);
+            break;
+        case BUBBLE:
+            sorter = new BubbleSorter<T>(clazz, data);
+            break;
+        case QUICK:
+            sorter = new QuickSorter<T>(clazz, data);
+            break;
+        case TOPDOWN_MERGE:
+            sorter = new TopDownMergeSorter<T>(clazz, data);
+            break;
+        case BOTTOMUP_MERGE:
+            sorter = new BottomUpMergeSorter<T>(clazz, data);
+            break;
+        case COMB:
+            sorter = new CombSorter<T>(clazz, data);
+            break;
+        }
+        return sorter;
+    }
 }

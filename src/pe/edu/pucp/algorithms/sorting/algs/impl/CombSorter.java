@@ -13,40 +13,40 @@ import pe.edu.pucp.algorithms.sorting.algs.BaseSorter;
  */
 public class CombSorter<T extends Comparable<T>> extends BaseSorter<T> {
 
-	private final float SHRINK_FACTOR = (float) 1.3;
+    private final float SHRINK_FACTOR = (float) 1.3;
 
-	public CombSorter(Class<T> clazz, T[] data) {
-		super(clazz, data);
-	}
+    public CombSorter(Class<T> clazz, T[] data) {
+        super(clazz, data);
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see pe.edu.pucp.algorithms.sorting.algs.BaseSorter#sortData()
-	 */
-	@Override
-	public void sortData() {
-		boolean flipped = false;
-		int gap = getLength();
-		do {
-			gap = (int) (gap / SHRINK_FACTOR);
-			if (gap == 0) {
-				gap = 1;
-			} else if (gap == 9 || gap == 10) {
-				gap = 11;
-			}
-			flipped = false;
-			int top = getLength() - gap;
-			for (int i = 0; i < top; i++) {
-				int j = i + gap;
-				T elementAtI = getDataAtIndex(i);
-				T elementAtJ = getDataAtIndex(j);
-				if (elementAtI.compareTo(elementAtJ) > 0) {
-					exchange(i, j);
-					flipped = true;
-				}
-			}
-		} while (flipped || (gap > 1));
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see pe.edu.pucp.algorithms.sorting.algs.BaseSorter#sortData()
+     */
+    @Override
+    public void sortData() {
+        boolean flipped = false;
+        int gap = getLength();
+        do {
+            gap = (int) (gap / SHRINK_FACTOR);
+            if (gap == 0) {
+                gap = 1;
+            } else if (gap == 9 || gap == 10) {
+                gap = 11;
+            }
+            flipped = false;
+            int top = getLength() - gap;
+            for (int i = 0; i < top; i++) {
+                int j = i + gap;
+                T elementAtI = getDataAtIndex(i);
+                T elementAtJ = getDataAtIndex(j);
+                if (elementAtI.compareTo(elementAtJ) > 0) {
+                    exchange(i, j);
+                    flipped = true;
+                }
+            }
+        } while (flipped || (gap > 1));
+    }
 
 }
