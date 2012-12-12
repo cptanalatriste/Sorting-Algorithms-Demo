@@ -7,5 +7,5 @@ package pe.edu.pucp.algorithms.sorting.algs;
  * 
  */
 public enum SortingAlgorithm {
-    INSERTION, BUBBLE, QUICK, TOPDOWN_MERGE, BOTTOMUP_MERGE, COMB;
+    INSERTION, BUBBLE, QUICK, TOPDOWN_MERGE, BOTTOMUP_MERGE, COMB, SEVERAL_UNIQUE, ODD_EVEN_TRANS;
 }

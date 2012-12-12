@@ -4,7 +4,9 @@ import pe.edu.pucp.algorithms.sorting.algs.impl.BottomUpMergeSorter;
 import pe.edu.pucp.algorithms.sorting.algs.impl.BubbleSorter;
 import pe.edu.pucp.algorithms.sorting.algs.impl.CombSorter;
 import pe.edu.pucp.algorithms.sorting.algs.impl.InsertionSorter;
+import pe.edu.pucp.algorithms.sorting.algs.impl.OddEvenTranspositionSorter;
 import pe.edu.pucp.algorithms.sorting.algs.impl.QuickSorter;
+import pe.edu.pucp.algorithms.sorting.algs.impl.SeveralUniqueSorter;
 import pe.edu.pucp.algorithms.sorting.algs.impl.TopDownMergeSorter;
 
 /**
@@ -50,6 +52,12 @@ public class SorterFactory {
             break;
         case COMB:
             sorter = new CombSorter<T>(clazz, data);
+            break;
+        case SEVERAL_UNIQUE:
+            sorter = new SeveralUniqueSorter<T>(clazz, data);
+            break;
+        case ODD_EVEN_TRANS:
+            sorter = new OddEvenTranspositionSorter<T>(clazz, data);
             break;
         }
         return sorter;

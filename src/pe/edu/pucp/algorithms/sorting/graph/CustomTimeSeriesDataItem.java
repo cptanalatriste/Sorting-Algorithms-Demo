@@ -34,4 +34,9 @@ public class CustomTimeSeriesDataItem extends TimeSeriesDataItem {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Value: " + getValue();
+    }
 }
